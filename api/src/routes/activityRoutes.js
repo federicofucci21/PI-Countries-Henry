@@ -4,31 +4,25 @@ const { Activity } = require("../db");
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
 
-router.post("/", async (req, res, next) => {
-    // const { id, name, difficulty, duration, season, countries } = req.body;
-    // try {
-    //     let activ = await Activity.create({id, name, difficulty, duration, season});
-    //     console.log(activ);
-    //     await activ.setCountries(countries)
-    // } catch (error) {
-    //     next(error);
-    // }
+router.post("/", async (req, res) => {
+
     const activity = req.body;
     console.log(req.body);
     try {
-        let [act, created] = await Activity.findOrCreate({
+        let [row, created] = await Activity.findOrCreate({
             where: {
                 name: activity.name,
                 difficulty: activity.difficulty,
-                duration: activity.duration,
+                duration: Number(activity.duration),
                 season: activity.season,
             }
         })
         console.log(created);
-        await act.setCountries(activity.countries)
-        return res.json(act);
+        await row.addCountries(activity.countries) //countries trae el ID del pais
+        return res.status(200).json(row);
     } catch (err) {
-        next(err);
+        console.log(err)
+        res.status(404).send(err);
     }
 })
 

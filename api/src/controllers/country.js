@@ -16,7 +16,7 @@ const dataModel = await dataApi.data.map( e =>{
     return {
         id: e.cca3,
         name: e.name.common,
-        flag: e.flag,
+        flag: e.flags[1],
         region: e.region,
         capital: e.capital ? e.capital[0] : 'capital inexistente',
         subregion: e.subregion,

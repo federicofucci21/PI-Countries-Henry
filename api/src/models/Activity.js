@@ -10,7 +10,7 @@ sequelize.define('activity', {
     difficulty: {
         type: DataTypes.ENUM('1','2','3','4','5'),
         },
-        duration: {
+    duration: {
         type: DataTypes.INTEGER,
         },
     season: {

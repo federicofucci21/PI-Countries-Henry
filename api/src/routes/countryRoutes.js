@@ -15,7 +15,7 @@ router.get('/', async (req, res)=>{
             const countryName = await Country.findAll({
                 where: {
                     name : {
-                        [Op.iLike]: `%${name}%`,
+                        [Op.iLike]: `%${name}%`
                     }
                 }
             })
@@ -28,57 +28,37 @@ router.get('/', async (req, res)=>{
     } catch (error) {
         res.status(400).send(error)
     }
-    
-
-
-
-
-
-
-
-
-
-//     const getCountries = async ()=>{ 
-//     return await Country.findAll({
-//         includes:{
-//             model: Activity,
-//             attributes: ['name'],
-//             throuth: {
-//                 attributes : []
-//             }
-//         }
-// })};
-
-
-//     const allCountries = await getCountries();
-
-//     if(!name){
-//         return res.status(200).send(allCountries)
-//     }else{
-//         try {
-//             let database = await Country.findAll({
-//                 where: {
-//                     name: { [Op.iLike]: `%${name}%`}
-//                 },
-//                 include: {
-//                     model: Activity,
-//                     attributes: ["name"],
-//                     through: {
-//                         attributes: []
-//                     }
-//                 }
-//             })
-//             console.log("estoy respondiendo bien")
-//             console.log(database);
-//             return res.send(database);
-//         } catch (err) {
-//             next(err);
-//             console.log(err);
-//         }
-//     }
-
 });
+
+router.get('/:id', async (req, res)=>{
+
+    const { id } = req.params;
+    // console.log(id);
+    if(id){
+    try {
+        
+            const countryId = await Country.findAll({
+                where: {id: { [Op.like]: `%${id}%`}},
+                include:{
+                    model: Activity,
+                    attributes: ['id', 'name', 'difficulty', 'duration', 'season'],
+                    througth : {
+                        attributes: []
+                    }
+                }
+            })
+            res.status(200).json(countryId)
+        
+    } catch (error) {
+        res.status(404).send(error)
+    }
+}
+})
+
+
 
 
 
 module.exports = router;
+
+
