@@ -7,7 +7,7 @@ function App() {
   return (
     <>
     <Route exact path={'/'}> <LandingPage/> </Route>
-    <Route path={'/home'}> <Home/> </Route>
+    <Route exact path={'/home'}> <Home/> </Route>
 
     </>
   );

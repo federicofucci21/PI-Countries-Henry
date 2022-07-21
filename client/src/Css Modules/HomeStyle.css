@@ -1,0 +1,100 @@
+.cardhome{
+    flex-direction: row;
+    display: inline-block;
+    
+}
+
+.home{
+    /* background-color: #F5F4F0; */
+    background-image: url("http://s3.amazonaws.com/storage.wobiz.com/54/54733/images/Large/1624898101_0ab9c463cf6e95d173e3f96808e10719.54733.jpeg");
+    background-attachment: fixed;
+
+    background-position-y: 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200%;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    transition: opacity 0.3s linear 0s;
+    width: 100%;
+
+    
+}
+.h1{
+    padding: 30px;
+    margin: 15px;
+    font-size: 60px;
+    font-family:cursive;
+    font-style:italic;
+    
+    
+}
+
+.divfilter{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #D5D2CA;
+    font-size: 20px;
+    font-style: normal;
+    line-height: 120%;
+    display: block;
+    /* background-color:azure; */
+    opacity: 1;
+    
+    /* margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px; */
+    font-weight: bold;
+    
+
+    padding: 50px;
+    text-align: center;
+    text-transform: uppercase;
+
+    
+
+    
+}
+
+.selectfilter{
+    margin: 5px;
+}
+
+.spanfilter{
+    margin: 10px;
+}
+
+.buttoncrearact{
+    margin: 30px;
+    display: inline-block;
+  -webkit-appearance: none;
+  border: 3px solid rgba(128, 128, 128, 0.986);
+  border-radius: 10px;
+  padding: 10px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-clip: padding-box;
+  position: relative;
+  color: black;
+  background-color: white;
+  font-size: 15px;
+}
+
+.nav{
+    padding-top: .5em;
+	padding-bottom: .5em;
+	border: 1px solid #a2a2a2;
+	background-color: #f4f4f4;
+	-webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+    margin-bottom: 30px;
+
+    display: block;
+
+    
+}
