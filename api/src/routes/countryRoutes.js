@@ -15,10 +15,11 @@ router.get('/', async (req, res)=>{
             const countryName = await Country.findAll({
                 where: {
                     name : {
-                        [Op.iLike]: `%${name}%`
+                        [Op.iLike]: `${name}`
                     }
                 }
             })
+            console.log(countryName);
             return res.status(200).send(countryName)
         } else {
             const allCountries = await Country.findAll()
@@ -37,7 +38,7 @@ router.get('/:id', async (req, res)=>{
     if(id){
     try {
         
-            const countryId = await Country.findAll({
+            const countryId = await Country.findOne({
                 where: {id: { [Op.like]: `%${id}%`}},
                 include:{
                     model: Activity,
