@@ -50,3 +50,8 @@
         padding: 5px;
         width: 100%;
     }
+    .welcome:hover{
+        background-color: #60609c;
+        color: #bee3db;
+        transition: all 450ms ease 0s;
+    }

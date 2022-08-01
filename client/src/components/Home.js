@@ -61,7 +61,6 @@ export default function Home(){
         setOrder(`Ordered ${e.target.value}`)
     };
 
-
     return(
         <div className={style.home}>
         <div className={style.home2}>
@@ -74,7 +73,6 @@ export default function Home(){
         <section className={style.titleSec}>
             <div className={style.title}>Paises del Mundo</div>
         </section>
-
 
         <section className={style.filterContinent}>
             <div className={style.divContinent}>

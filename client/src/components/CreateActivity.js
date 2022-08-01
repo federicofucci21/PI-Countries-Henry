@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createActivity, getCountries } from "../actions";
 import { Link, useHistory } from "react-router-dom";
+import style from '../Css Modules/CreateActivityStyle.module.css'
 
 
 export default function CreateActivity (props){
@@ -56,10 +57,15 @@ export default function CreateActivity (props){
 
 
     return (
+        <div className={style.create}>
+        <header>
+            <div className={style.header}>
+                <Link to='/home'><button className={style.btnHeader}>Volver</button></Link>
+            </div>
+        </header>
+
+        <main>
         <div>
-        <div>
-            <Link to='/home'><button>Volver</button></Link>
-        </div>
             <form onSubmit={(e)=>{handleSubmit(e)}}> 
             <div>
                 <label>Name: </label>
@@ -70,20 +76,19 @@ export default function CreateActivity (props){
             </div>
 
             <div>
-                <label>Difficulty: </label>
-                <input type="range" 
-                name='difficulty' 
-                min='1' 
-                max='5' 
-                step='1' 
-                onChange={handleInputChange} 
-                value={input.difficulty}
-                id='range'
-                />
-            <input type="text" id="textInput" value={input.difficulty}/>
-            {/* <div>{input.difficulty}</div> */}
-
+            <label>Difficulty: </label>  
+            <select placeholder='Difficulty' 
+                    name='difficulty'
+                    // value={input.season}
+                    onChange={handleInputChange}>
+                <option value='1'>1-(Muy Facil)</option>
+                <option value='2'>2-(Facil)</option>
+                <option value='3'>3-(Medio)</option>
+                <option value='4'>4-(Dificil)</option>
+                <option value='5'>5-(Muy Dificil)</option>
+            </select>
             </div>
+
             <div>
                 <label>Duration: </label>
                 <input 
@@ -119,7 +124,28 @@ export default function CreateActivity (props){
 
         </form>
         </div>
+        </main>
+        </div>
     );
 }
 
 
+
+
+
+
+
+// <div>
+// <label>Difficulty: </label>
+// <input type="range" 
+// name='difficulty' 
+// min='1' 
+// max='5' 
+// step='1' 
+// onChange={handleInputChange} 
+// value={input.difficulty}
+// id='range'
+// />
+// <input type="text" id="textInput" value={input.difficulty}/>
+// {/* <div>{input.difficulty}</div> */}
+// </div>

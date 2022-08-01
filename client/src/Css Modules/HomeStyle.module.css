@@ -28,6 +28,7 @@
     display: flex;
     flex-direction: row;
     justify-content:space-around;
+    align-content: center;
     text-align: center;
     align-items: center;
     height: 40%;
@@ -38,6 +39,7 @@
     border: 2px solid #0000005a;
     border-radius: 0.5rem;
     backdrop-filter: blur(3px);
+    background-color: #5e548e23;
 }
 
 .buttonNav{
@@ -71,7 +73,7 @@
     font-size: 2.5rem;
     font-weight: 700;
     backdrop-filter: blur(3px);
-    background-color: #0000002a;
+    background-color: #5e548e23;
     border: 2px solid #0000005a;
     border-radius: 0.5rem;
     align-items: center;
@@ -149,6 +151,7 @@
     height: 50px;
     justify-content: space-between;
     border: 2px solid #0000005a;
+    background-color: #5e548e23;
     border-radius: 0.5rem;
     align-items: center;
 }

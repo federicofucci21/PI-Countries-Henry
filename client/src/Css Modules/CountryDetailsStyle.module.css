@@ -23,7 +23,7 @@
     color: rgb(176, 164, 164);
     backdrop-filter: blur(3px);
     background-color: #00000080;
-    border: 2px solid transparent;
+    border: 2px solid #0000005a;
     border-radius: 0.5rem;
     width: 6rem;
     height: 1.5rem;
@@ -47,7 +47,7 @@
     flex-direction: row;
     backdrop-filter: blur(3px);
     background-color: #00000080;
-    border: 2px solid transparent;
+    border: 2px solid #0000005a;
     border-radius: 0.5rem;
     height: 300px;
     /* width: 400px; */
