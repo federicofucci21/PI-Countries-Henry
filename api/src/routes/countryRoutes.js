@@ -15,7 +15,7 @@ router.get('/', async (req, res)=>{
             const countryName = await Country.findAll({
                 where: {
                     name : {
-                        [Op.iLike]: `${name}`
+                        [Op.iLike]: `%${name}%`
                     }
                 }
             })
@@ -38,14 +38,15 @@ router.get('/:id', async (req, res)=>{
     if(id){
     try {
         
-            const countryId = await Country.findOne({
-                where: {id: { [Op.like]: `%${id}%`}},
+            const countryId = await Country.findByPk(id,
+                {
+                // where: {id: { [Op.like]: `%${id}%`}},
                 include:{
                     model: Activity,
                     attributes: ['id', 'name', 'difficulty', 'duration', 'season'],
-                    througth : {
-                        attributes: []
-                    }
+                    // througth : {
+                    //     attributes: []
+                    // }
                 }
             })
             res.status(200).json(countryId)
