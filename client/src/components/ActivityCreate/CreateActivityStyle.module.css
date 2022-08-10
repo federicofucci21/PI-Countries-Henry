@@ -1,0 +1,112 @@
+.create{
+    background-image: url('../../img/bkg_image2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover;
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    align-items: center;
+    align-content: center;
+    
+}
+
+.header{
+    backdrop-filter: blur(3px);
+    border: 2px solid transparent;
+    background-color: #00000080;
+    height: 40px;
+    
+}
+
+.btnHeader{
+    color: rgb(176, 164, 164);
+    backdrop-filter: blur(3px);
+    background-color: #00000080;
+    border: 2px solid #0000005a;
+    border-radius: 0.5rem;
+    width: 6rem;
+    height: 1.5rem;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-left: 30px;
+    margin-top: 6px;
+}
+.btnHeader:hover{
+    background-color: #60609c;
+    color: #bee3db;
+    transition: all 450ms ease 0s;
+}
+
+.divform{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+
+}
+
+.form{
+    color: rgb(176, 164, 164);
+    
+    text-align: center;
+    /* position: absolute; */
+    display:flex;
+    flex-direction: column;
+    backdrop-filter: blur(3px);
+    background-color: #00000080;
+    border: 2px solid #0000005a;
+    border-radius: 0.5rem;
+    align-items:center;
+    align-content:center;
+    justify-content: center;
+    width: 30%;
+    height: 80%;
+    margin: 10px;
+    padding: 10px;
+}
+
+.name, .difficulty, .duration, .season, .countries{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    justify-content: center;
+
+}
+
+
+
+.btnForm{
+    color: rgb(176, 164, 164);
+    backdrop-filter: blur(3px);
+    background-color: #00000080;
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    width: 6rem;
+    height: 2rem;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 700;
+    justify-content: center;
+
+
+}
+.btnForm:hover{
+    background-color: #60609c;
+    color: #bee3db;
+    transition: all 450ms ease 0s;
+}
+
+.select, .input{
+    color: #495057;
+    backdrop-filter: blur(3px);
+    background-color: #00000080;
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+

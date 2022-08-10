@@ -1,10 +1,10 @@
 import './App.css';
 import { Route } from "react-router-dom";
-import LandingPage from './components/LandingPage';
-import Home from './components/Home'
-import CountryDetails from './components/CountryDetails';
-import CreateActivity from './components/CreateActivity';
-import ActivitiesAll from './components/ActivitiesAll';
+import LandingPage from './components/LandingPage/LandingPage';
+import Home from './components/Home/Home'
+import CountryDetails from './components/CountryDetails/CountryDetails';
+import CreateActivity from './components/ActivityCreate/CreateActivity';
+import ActivitiesAll from './components/ActivitiesAll/ActivitiesAll';
 
 function App() {
   return (
@@ -17,9 +17,6 @@ function App() {
       />
       <Route path={'/activity'} component={ActivitiesAll}/>
       <Route path={'/activities'} component={CreateActivity}/>
-
-
-
     </>
   );
 }

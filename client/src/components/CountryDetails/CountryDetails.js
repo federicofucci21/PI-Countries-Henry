@@ -1,9 +1,9 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getCountryDetail } from '../actions';
+import { getCountryDetail, cleanDeteails } from '../../actions';
 import { Link } from 'react-router-dom';
-import style  from '../Css Modules/CountryDetailsStyle.module.css'
+import style  from './CountryDetailsStyle.module.css'
 
 export default function CountryDetails(props){
 
@@ -12,11 +12,15 @@ export default function CountryDetails(props){
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(getCountryDetail(id))}, [dispatch]
+        dispatch(getCountryDetail(id)); 
+    return ()=>{
+        dispatch(cleanDeteails(dispatch))
+    }
+}, [dispatch]
     );
 
     const countriesDetail = useSelector((state)=>state.countryDetails);
-    console.log(countriesDetail);
+    // console.log(countriesDetail);
 
     
 return(
@@ -48,7 +52,7 @@ return(
         return (
         <section className={style.actSection}>
             <div key={a.id} >
-            <h2>{a.name}</h2>
+            <h2>{a.name.toUpperCase()}</h2>
             <h5>Difficulty: {a.difficulty}</h5>
             <h5>Duration: {a.duration} hours</h5>
             <h5>Season: {a.season}</h5>

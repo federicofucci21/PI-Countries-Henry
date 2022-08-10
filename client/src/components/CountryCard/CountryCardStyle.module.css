@@ -8,13 +8,15 @@
     position: relative;
     color: #f5d1ef;
     background-color: #5e548e23;
+    box-shadow: 1.5px 0.5px 5px #f2adadbc;
 
     /* opacity: 0.70; */
 }
 .card:hover{
     background-color: #e75d5dbc;
     color: rgb(16, 15, 15);
-    transition: all 450ms ease 0s;
+    transition: all 250ms ease 0s;
+    box-shadow: 3.5px 1.5px 5px white;
 }
 
 .imgstyle{
@@ -27,8 +29,9 @@
 }
 
 .link {
-    color: black;
-    background-color: #bee3db;
+    color: rgb(176, 164, 164);
+    backdrop-filter: blur(5px);
+    background-color: #00000080;
     position: absolute;
     bottom: 0.35rem;
     right: 7.5rem;
@@ -49,18 +52,27 @@
     transition: all 450ms ease 0s;
 }
 .section{
+
     justify-content: center;
     text-align: center;
     font-size: 1.25rem;
 }
 
 .name{
-    display: flex;
-    text-align: center;
+    color: black;
+    background-color: #c9ada781;
+    margin: 0.25rem;
     font-size: 1.75rem;
-    font-weight: 700;
-    padding: 10px;
-    width: fit-content;
-    
+    font-weight: 700; 
+    border: 2px solid #c9ada7;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+
 }
 
+.divName{
+    display: flex;
+
+
+
+}

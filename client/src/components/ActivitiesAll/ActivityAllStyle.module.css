@@ -1,5 +1,5 @@
 .main{
-    background-image: url('../img/bkg_image2.jpg');
+    background-image: url('../../img/bkg_image3.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -11,6 +11,7 @@
 
 
 .header{
+    color:rgb(176, 164, 164);
     display: flex;
     backdrop-filter: blur(3px);
     border: 2px solid #0000005a;
@@ -26,9 +27,9 @@
 
 .btnHeader{
     color: rgb(176, 164, 164);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(1px);
     background-color: #00000080;
-    border: 2px solid transparent;
+    border: 1px solid #29292980;
     border-radius: 0.5rem;
     width: 6rem;
     height: 2rem;
@@ -126,4 +127,12 @@
     flex-direction: column;
     justify-content: space-around;
     margin: 30px;
+}
+
+.difLevel{
+    background-color: #bee3db56;
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    width: fit-content;
+    margin-left: 2%;
 }

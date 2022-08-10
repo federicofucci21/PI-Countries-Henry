@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import style from '../Css Modules/activityCardStyle.module.css'
+import style from './activityCardStyle.module.css'
 
 
 

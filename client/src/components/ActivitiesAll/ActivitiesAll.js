@@ -1,21 +1,21 @@
 import React from 'react';
-import ActivityCard from './ActivityCard';
+import ActivityCard from '../ActivityCard/ActivityCard';
 import { Link } from 'react-router-dom';
-import CountryDetails from './CountryDetails';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getActivities } from '../actions';
-import { filterByActivities } from '../actions';
-import style from '../Css Modules/ActivityAllStyle.module.css'
+import { getActivities } from '../../actions';
+import { filterByActivities } from '../../actions';
+import style from './ActivityAllStyle.module.css'
 
 export default function ActivitiesAll(){
 
     const dispatch = useDispatch();
     useEffect(()=>{
-        dispatch(getActivities())}, [dispatch]
+        dispatch(getActivities())}, [dispatch, getActivities]
     );
     const filterActivities = useSelector((state)=>state.filteredActivities);
     const allActivities = useSelector((state)=>state.allActivities);
+    
 
     function handleFilterByActivitie(e){
         e.preventDefault();
@@ -33,7 +33,7 @@ export default function ActivitiesAll(){
             <div className={style.divSelect}>
             <label>Activities</label>
             <select className={style.btnHeader} placeholder='Activities' onChange={(e)=>{handleFilterByActivitie(e)}}>
-                <option value='all'>All</option>
+                <option id='allActivities' value='all'>All</option>
                     {
                         allActivities.map(e=>(
                             <option value={e.name}>{e.name}</option>
@@ -42,7 +42,7 @@ export default function ActivitiesAll(){
                 </select>
                 </div>
         </div>
-        <div><h5>* - 1(Muy facil) 2(facil) 3(Medio) 4(Dificil) 5(Muy Dificil)</h5></div>
+        <div><h5 className={style.difLevel}>* - 1(Muy facil) 2(facil) 3(Medio) 4(Dificil) 5(Muy Dificil)</h5></div>
         <div className={style.divCards}>
         {
             filterActivities?.map((e)=>{
@@ -50,7 +50,7 @@ export default function ActivitiesAll(){
                 <section className={style.activityCard}>
                 <div className={style.divAct}>
                 <ActivityCard
-                name={e.name} 
+                name={e.name.toUpperCase()} 
                 difficulty={e.difficulty} 
                 duration={e.duration}
                 season={e.season}

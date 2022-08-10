@@ -1,0 +1,10 @@
+.main{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 27rem);
+    justify-content: space-between;
+    justify-items:auto;
+    align-content: center;
+    align-items: center;
+
+}

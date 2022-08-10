@@ -1,26 +1,35 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getCountries, filterCountriesByContinent, filterOrderAlf, filterCountriesByActivity, filterPopulation} from '../actions';
+import { getCountries, filterCountriesByContinent, filterOrderAlf, filterCountriesByActivity, filterPopulation, getActivities} from '../../actions';
 import { Link } from "react-router-dom";
-import CountryCards from './CountryCards'
-import style from  '../Css Modules/HomeStyle.module.css'
-import Pages from './Pages';
-import SearchBar from './SearchBar';
+import CountryCards from '../CountryCards/CountryCards'
+import style from  './/HomeStyle.module.css'
+import Pages from '../Pages/Pages';
+import SearchBar from '../SearchBar/SearchBar';
 
 
 export default function Home(){
 
     const dispatch = useDispatch();
+
     useEffect(()=>{
-        dispatch(getCountries())}, [dispatch]
+        dispatch(getCountries()
+        )
+    }, [dispatch, getCountries]
+    );
+    useEffect(()=>{
+        dispatch( 
+        getActivities())
+    }, [dispatch, getActivities]
     );
 
     const selectActivities = useSelector((state)=>state.allActivities);
         console.log('selectActivities', selectActivities)
 
     const allCountries = useSelector((state)=>state.countries);
-    console.log(allCountries);
+    // console.log(allCountries);
+
 
     const [currentPage, setCurrentPage] = useState(1);
     const [countriesPerPage, setCountriesPerPage] = useState(9);
@@ -32,6 +41,7 @@ export default function Home(){
         setCurrentPage(pageNumber)
     };
 
+        // console.log('currentPage', currentPage)
     function handleClick(e){
         e.preventDefault();
         dispatch(getCountries())
@@ -61,13 +71,14 @@ export default function Home(){
         setOrder(`Ordered ${e.target.value}`)
     };
 
+
     return(
         <div className={style.home}>
-        <div className={style.home2}>
+
         <header className={style.navbar}>
-            <SearchBar className={style.buttonNav}/>
-            <Link to='/activity'><button className={style.buttonNav}>Activities</button></Link>
-            <button className={style.buttonNav} onClick={e=>{handleClick(e)}}>Refresh</button>
+            <SearchBar className={style.buttonNav_Search}/>
+            <Link to='/activity'><button className={style.buttonNav_Act}>Activities</button></Link>
+            <button className={style.buttonNav_Refresh} onClick={e=>{handleClick(e)}}>Refresh</button>
         </header>
 
         <section className={style.titleSec}>
@@ -88,16 +99,16 @@ export default function Home(){
         <section className={style.filter}>
             <div className={style.divSelect}>
             <label>Orden Alfabetico</label>
-            <select className={style.select} placeholder='Order' onChange={e=>{handleOrderAlf(e)}}>
-                <option>Order</option>
+            <select className={style.select} placeholder='Order Alf' onChange={e=>{handleOrderAlf(e)}}>
+                <option>--Order--</option>
                 <option value='asc'>Ascendente</option>
                 <option value='desc'>Descendente</option>
             </select>
             </div>
             <div className={style.divSelect}>
             <label>Orden por Poblacion</label>
-            <select className={style.select} placeholder='Order' onChange={e=>{handleOrderPob(e)}}>
-                <option>Order</option>
+            <select className={style.select} placeholder='Order Popul' onChange={e=>{handleOrderPob(e)}}>
+                <option>--Order--</option>
                 <option value='min'>Min</option>
                 <option value='max'>Max</option>
             </select>
@@ -128,11 +139,12 @@ export default function Home(){
     <Pages
     countriesPerPage={countriesPerPage}
     allCountries={allCountries.length}
+    currentPage = {currentPage}
     paginado={paginado}
     />
 </div>
 </footer>
-</div>
+
 </div>
     )
 

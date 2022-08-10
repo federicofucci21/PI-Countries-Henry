@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import CountryCard from './CountryCard';
-import style from '../Css Modules/CountryCardsStyle.module.css'
+import CountryCard from '../CountryCard/CountryCard';
+import style from './CountryCardsStyle.module.css'
 
 
 export default function CountryCards({ currentCountries }){
@@ -11,7 +10,7 @@ export default function CountryCards({ currentCountries }){
         <div className={style.main}>
         {
             
-            currentCountries?.map((e)=>{
+            !currentCountries.length?'Loading...':currentCountries.map((e)=>{
                 return (
                 <CountryCard
                 key={e.id}

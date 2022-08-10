@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getCountryName } from '../actions';
-import style from '../Css Modules/SearchbarStyle.module.css'
+import { getCountries, getCountryName } from '../../actions';
+import style from './SearchbarStyle.module.css'
 
 
 
@@ -9,6 +9,10 @@ export default function SearchBar (){
 
     const dispatch = useDispatch();
     const [name, setName] = useState('');
+
+    const searchInput = document.getElementById('searchInput');
+
+
 
     function handleInputChange(e){
         e.preventDefault();
@@ -19,15 +23,24 @@ export default function SearchBar (){
     function handleSubmit(e){
 
         // console.log(name)
-        e.preventDefault();
-        dispatch(getCountryName(name));
-        setName('')
+        if(name===''){
+            e.preventDefault();
+            dispatch(getCountries());
+            // window.alert('You must insert a Country Name')
+        }else{        
+            e.preventDefault();
+            dispatch(getCountryName(name));
+        };
+        setName('');
+        searchInput.value='';
     }
 
 
     return (
-        <form className={style.form}>
+        <form className={style.form}
+        onSubmit={(e)=> handleSubmit(e)}>
             <input
+            id='searchInput'
             className={style.input}
             type='text'
             placeholder='Find Country...'
@@ -38,6 +51,7 @@ export default function SearchBar (){
             className={style.btn}
             type='submit' 
             onClick={(e)=> handleSubmit(e)}
+            
             >Buscar</button>
 
         </form>

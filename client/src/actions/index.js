@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 
+
+
 export function getCountries(){
     return async function(dispatch){
         const dataCountries = await axios('http://localhost:3001/countries');
@@ -43,6 +45,13 @@ export function getCountryDetail(id){
 
         })
     }
+};
+
+export function cleanDeteails(){
+    return ({
+        type: 'CLEAN_DETAILS',
+        payload: {}
+    })
 };
 
 export function filterCountriesByContinent(payload){

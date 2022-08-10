@@ -29,7 +29,13 @@ function rootReducer (state=initialState, action){
             return{
                 ...state,
                 countryDetails: action.payload
-            }
+            };
+
+        case 'CLEAN_DETAILS':
+                return{
+                    ...state,
+                    countryDetails: action.payload
+                }
 
         case 'FILTER_BY_CONTINENT':
 
