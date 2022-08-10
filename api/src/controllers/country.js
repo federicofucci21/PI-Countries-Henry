@@ -19,7 +19,7 @@ const dataModel = await dataApi.data.map( e =>{
         flag: e.flags[1],
         region: e.region,
         capital: e.capital ? e.capital[0] : 'capital inexistente',
-        subregion: e.subregion,
+        subregion: e.subregion? e.subregion : 'subregion inexistente',
         area: e.area,
         population: e.population
     }
@@ -29,7 +29,8 @@ const dataModel = await dataApi.data.map( e =>{
 
 
 dataModel.forEach( async (e)=>{
-    await Country.create({
+    await Country.findOrCreate(
+        {where:{
         id: e.id,
         name: e.name,
         flag: e.flag,
@@ -38,7 +39,7 @@ dataModel.forEach( async (e)=>{
         subregion: e.subregion,
         area: e.area,
         population: e.population
-    })
+    }})
 } );
 
 
