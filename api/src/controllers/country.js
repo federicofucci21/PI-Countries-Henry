@@ -11,6 +11,7 @@ const axios = require("axios");
 const updateTotal = async ()=>{
 
 const dataApi = await axios.get('https://restcountries.com/v3/all');
+console.log('dataapi', dataApi)
 
 const dataModel = await dataApi.data.map( e =>{
     return {

@@ -6,6 +6,12 @@ export default function landingPage (){
 
     return( 
         <div className={style.land}>
+            <div className={style.land_title}>
+                ¿Querés conocer sobre <br></br>   los paises del Mundo?
+            </div>
+            <div className={style.land_question}>
+                Hacé click
+            </div>
             <Link to='/home'>
             <section className={style.section}>
                 <div className={style.earth}></div>

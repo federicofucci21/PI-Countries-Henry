@@ -43,7 +43,8 @@
     width: 6rem;
     height: 1.5rem;
     cursor: pointer;
-    font-size: 0.75rem;
+    font-family: 'Wild Hunt', sans-serif;
+    font-size: 0.95rem;
     font-weight: 700;
 }
 .link:hover{
@@ -52,7 +53,6 @@
     transition: all 450ms ease 0s;
 }
 .section{
-
     justify-content: center;
     text-align: center;
     font-size: 1.25rem;
@@ -62,7 +62,8 @@
     color: black;
     background-color: #c9ada781;
     margin: 0.25rem;
-    font-size: 1.75rem;
+    font-family: 'Wild Hunt', sans-serif;
+    font-size: 1.95rem;
     font-weight: 700; 
     border: 2px solid #c9ada7;
     border-radius: 0.5rem;
@@ -72,7 +73,19 @@
 
 .divName{
     display: flex;
+}
 
+.divInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    height: 100px;
+}
 
-
+.region, .population{
+    font-family: 'Wild Hunt', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #b9b9bf;
 }

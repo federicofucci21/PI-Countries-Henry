@@ -8,7 +8,7 @@
 
 
 .land{
-    /* display: flex; */
+    display: flex;
     flex-direction: column;
     background-image: url('../../img/bkg_image3.jpg');
     background-repeat: no-repeat;
@@ -23,6 +23,43 @@
     min-height: 100%;
     min-width: 100%;
 }
+
+
+
+.land_title, .land_question{
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Wild Hunt', sans-serif;
+    color: black;
+    width: fit-content;
+    text-shadow: 0 0 0.2em rgb(221, 219, 235), 0 0 0.2em rgb(221, 219, 235),
+		0 0 0.2em rgb(221, 219, 235);
+}
+
+.land_title{
+    position:absolute;
+    left:15%;
+    top:20%;
+
+    -webkit-transform: rotate(-10deg); 
+    -moz-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.land_question{
+    position:absolute;
+    right:25%;
+    top:25%;
+
+    -webkit-transform: rotate(10deg); 
+    -moz-transform: rotate(10deg);
+    -o-transform: rotate(10deg);
+    transform: rotate(10deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
 .section{
     display: flex;
     justify-content: center;

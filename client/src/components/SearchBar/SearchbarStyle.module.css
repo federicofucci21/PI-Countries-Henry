@@ -23,8 +23,9 @@
     width: 6rem;
     height: 1.5rem;
     cursor: pointer;
-    font-size: 0.75rem;
+    font-size: 0.95rem;
     font-weight: 700;
+    font-family: 'Wild Hunt', sans-serif;
 }
 .btn:hover{
     background-color: #60609c;
