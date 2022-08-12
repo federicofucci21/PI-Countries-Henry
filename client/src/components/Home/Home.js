@@ -16,7 +16,7 @@ export default function Home(){
     useEffect(()=>{
         dispatch(getCountries()
         )
-    }, [dispatch, getCountries]
+    }, [dispatch]
     );
     useEffect(()=>{
         dispatch( 
@@ -44,32 +44,35 @@ export default function Home(){
 
 
     return (
-      <div>{
-        !currentCountries.length?<LoadingPage />:
-      <div className={style.home}>
-        <Filters
-          setCurrentPage={setCurrentPage}
-          setOrder={setOrder}
-          selectActivities={selectActivities}
-        />
-
-        <main className={style.main}>
-          <section className={style.homeCard}>
-              <CountryCards currentCountries={currentCountries} />
-          </section>
-        </main>
-
-        <footer className={style.footer}>
-          <div>
-            <Pages
-              countriesPerPage={countriesPerPage}
-              allCountries={allCountries.length}
-              currentPage={currentPage}
-              paginado={paginado}
+      <div>
+        {!currentCountries.length ? (
+          <LoadingPage />
+        ) : (
+          <div className={style.home}>
+            <Filters
+              setCurrentPage={setCurrentPage}
+              setOrder={setOrder}
+              selectActivities={selectActivities}
             />
+
+            <main className={style.main}>
+              <section className={style.homeCard}>
+                <CountryCards currentCountries={currentCountries} />
+              </section>
+            </main>
+
+            <footer className={style.footer}>
+              <div>
+                <Pages
+                  countriesPerPage={countriesPerPage}
+                  allCountries={allCountries.length}
+                  currentPage={currentPage}
+                  paginado={paginado}
+                />
+              </div>
+            </footer>
           </div>
-        </footer>
-      </div>}
+        )}
       </div>
     );
 

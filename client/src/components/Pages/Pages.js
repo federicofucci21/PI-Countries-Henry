@@ -31,9 +31,7 @@ export default function Pages({countriesPerPage, allCountries, paginado, current
             <div className={style.nav}>
                 <div className={style.btnDiv}>
                 <button className={style.btnPage} onClick={()=>{handlePrev({currentPage})}}> {prevVar} </button>
-                Current 
                 <h5 className={style.current}>{currentPage}</h5>
-                 Page
                 <button className={style.btnPage} onClick={()=>{handleNext({currentPage})}}>{nextVar}</button>
                 </div>
                 <div>
