@@ -28,6 +28,8 @@ sequelize.define('activity', {
         type: DataTypes.INTEGER,
         allowNull:false,
         validate:{
+            min: 1,
+            max: 24,
             notNull: true,
             isNumeric: true,
         }

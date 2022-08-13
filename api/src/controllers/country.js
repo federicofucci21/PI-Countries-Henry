@@ -11,7 +11,7 @@ const axios = require("axios");
 const updateTotal = async ()=>{
 
 const dataApi = await axios.get('https://restcountries.com/v3/all');
-console.log('dataapi', dataApi)
+// console.log('dataapi', dataApi)
 
 const dataModel = await dataApi.data.map( e =>{
     return {
@@ -19,8 +19,8 @@ const dataModel = await dataApi.data.map( e =>{
         name: e.name.common,
         flag: e.flags[1],
         region: e.region,
-        capital: e.capital ? e.capital[0] : 'capital inexistente',
-        subregion: e.subregion? e.subregion : 'subregion inexistente',
+        capital: e.capital ? e.capital[0] : 'capital not found', //Some countries don't have capital
+        subregion: e.subregion? e.subregion : 'subregion not found', //Some countries don't have subregion
         area: e.area,
         population: e.population
     }

@@ -21,22 +21,22 @@ export default function Home(){
     useEffect(()=>{
         dispatch( 
         getActivities())
-    }, [dispatch, getActivities]
+    }, [dispatch]
     );
 
     const selectActivities = useSelector((state)=>state.allActivities);
-        console.log('selectActivities', selectActivities)
+        // console.log('selectActivities', selectActivities)
 
     const allCountries = useSelector((state)=>state.countries);
     // console.log(allCountries);
 
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [countriesPerPage, setCountriesPerPage] = useState(9);
+    const [countriesPerPage] = useState(9);
     const indexOfLastCountries= currentPage * countriesPerPage;
     const indexOfFisrtCountries= indexOfLastCountries - countriesPerPage;
     const currentCountries = allCountries.length?allCountries.slice(indexOfFisrtCountries, indexOfLastCountries):allCountries
-    const [order, setOrder] = useState('')
+    const [ setOrder] = useState('')
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
     };

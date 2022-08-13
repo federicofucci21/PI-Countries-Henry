@@ -11,7 +11,7 @@ export default function ActivitiesAll(){
 
     const dispatch = useDispatch();
     useEffect(()=>{
-        dispatch(getActivities())}, [dispatch, getActivities]
+        dispatch(getActivities())}, [dispatch]
     );
     const filterActivities = useSelector((state)=>state.filteredActivities);
     const allActivities = useSelector((state)=>state.allActivities);

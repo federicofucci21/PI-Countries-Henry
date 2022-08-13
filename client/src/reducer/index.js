@@ -1,3 +1,19 @@
+import {
+    GET_COUNTRIES,
+    GET_BY_NAME,
+    GET_DETAILS,
+    CLEAN_DETAILS,
+    FILTER_BY_CONTINENT,
+    FILTER_BY_ACTIVITY,
+    ORDER_ALF,
+    ORDER_POB,
+    GET_ACTIVITIES,
+    FILTER_BY_ACTIVITIES,
+} from '../actions/index'
+
+import { filterCountries, filterByAcrivities  } from './auxi';
+
+
 
 const initialState = {
     countries: [],
@@ -10,14 +26,14 @@ const initialState = {
 function rootReducer (state=initialState, action){
 
     switch(action.type){
-        case 'GET_COUNTRIES':
+        case GET_COUNTRIES:
             // console.log(action.payload)
             return{
                 ...state,
                 countries: action.payload,
                 allCountries: action.payload
             };
-        case 'GET_BY_NAME':
+        case GET_BY_NAME:
                         console.log(action.payload)
             return {
                 ...state,
@@ -25,44 +41,35 @@ function rootReducer (state=initialState, action){
             };
 
 
-        case 'GET_DETAILS':
+        case GET_DETAILS:
             return{
                 ...state,
                 countryDetails: action.payload
             };
 
-        case 'CLEAN_DETAILS':
+        case CLEAN_DETAILS:
                 return{
                     ...state,
                     countryDetails: action.payload
                 }
 
-        case 'FILTER_BY_CONTINENT':
-
-            const allCountries = state.allCountries;
-
-            const countriesFiltered = action.payload === 'all'?allCountries:allCountries.filter(e=>e.region===action.payload)
+        case FILTER_BY_CONTINENT:
             return{
                 ...state,
-                countries: countriesFiltered
+                countries: filterCountries(state.allCountries, action.payload)
             }
 
-        case 'FILTER_BY_ACTIVITY':
-            let activitiesAct = state.allActivities;
-            let countriesAct= action.payload === 'all'?state.allCountries
-            :activitiesAct.filter(e=>e.name===action.payload)[0].countries
-            console.log(countriesAct)
+        case FILTER_BY_ACTIVITY:
+            // let activitiesAct = state.allActivities;
+            // let countriesAct= action.payload === 'all'?state.allCountries
+            // :activitiesAct.filter(e=>e.name===action.payload)[0].countries
+            // console.log(countriesAct)
             return {
                 ...state,
-                countries: countriesAct
-            }
-
-        case 'POST_ACTIVITY':
-            return {
-                ...state,
+                countries: filterByAcrivities(state.allCountries, state.allActivities, action.payload)
             }
             
-        case 'ORDER_ALF':
+        case ORDER_ALF:
             console.log('stateAct',state.allActivities)
             let countriesOrdered = action.payload === 'asc'?
             state.countries.sort(function(a,b){
@@ -88,7 +95,7 @@ function rootReducer (state=initialState, action){
                 countries: countriesOrdered
             };
 
-        case 'ORDER_POB':
+        case ORDER_POB:
                 let countriesPob = action.payload === 'min'?
                 state.countries.sort(function(a,b){
                     if(a.population>b.population){
@@ -113,14 +120,14 @@ function rootReducer (state=initialState, action){
                     countries: countriesPob
                 };
 
-        case 'GET_ACTIVITIES':
+        case GET_ACTIVITIES:
             // console.log(action.payload)
             return{
                 ...state,
                 allActivities: action.payload,
                 filteredActivities: action.payload
             };
-        case 'FILTER_BY_ACTIVITIES':
+        case FILTER_BY_ACTIVITIES:
             const allActivities = state.allActivities;
             console.log(allActivities)
             const activitiesFiltered = action.payload === 'all'?allActivities:allActivities.filter(e=>e.name===action.payload)

@@ -1,7 +1,15 @@
 import axios from 'axios';
 
-
-
+export const GET_COUNTRIES = 'GET_COUNTRIES';
+export const GET_BY_NAME = 'GET_BY_NAME';
+export const GET_DETAILS = 'GET_DETAILS';
+export const CLEAN_DETAILS = 'CLEAN_DETAILS';
+export const FILTER_BY_CONTINENT = 'FILTER_BY_CONTINENT';
+export const FILTER_BY_ACTIVITY = 'FILTER_BY_ACTIVITY';
+export const ORDER_ALF = 'ORDER_ALF';
+export const ORDER_POB = 'ORDER_POB';
+export const GET_ACTIVITIES = 'GET_ACTIVITIES';
+export const FILTER_BY_ACTIVITIES = 'FILTER_BY_ACTIVITIES';
 
 export function getCountries(){
     return async function(dispatch){
@@ -16,18 +24,19 @@ export function getCountries(){
 
 export function getCountryName(name){
 
-    console.log(name)
+    // console.log(name)
     return async function(dispatch){
 
         try {
             const nameCountry = await axios.get("http://localhost:3001/countries?name="+name);
-            console.log(nameCountry)
+            // console.log(nameCountry)
             return dispatch({
                 type: 'GET_BY_NAME',
                 payload: nameCountry.data
             })
         } catch (error) {
             console.log(error)
+            alert('Country not Found')
         }
     }
 };
@@ -83,9 +92,16 @@ export function filterPopulation(payload){
 };
 export function createActivity(payload){
     return async function(dispatch){
-        const activity = axios.post("http://localhost:3001/activities", payload);
-        console.log(payload);
-        return activity
+        try {
+            const activity = await axios.post("http://localhost:3001/activities", payload);
+            console.log(payload);
+            alert('Activity Created')
+            return activity
+        } catch (error) {
+            console.log(error);
+            alert(error.response.data.errors[0].message)
+        }
+
 
     }
 };

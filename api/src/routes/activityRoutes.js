@@ -3,13 +3,33 @@ const router = Router();
 const { Activity } = require("../db");
 const { Country } = require ("../db");
 require("dotenv").config();
-const { Sequelize } = require("sequelize");
+
 
 router.post("/", async (req, res) => {
 
     const activity = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     try {
+
+        //Some validations ...
+
+        if(
+            !activity.name || !activity.difficulty || !activity.duration || !activity.season || !activity.countries
+        ){
+            return res.status(404).send('Missing obligatory data')
+        }
+        if(!activity.countries.length){
+            return res.status(404).send('At least one Country is required')
+        }
+        if(
+            activity.difficulty < 1 ||
+            activity.difficulty > 5 ||
+            activity.duration < 1 ||
+            activity.duration > 24 
+            ){
+            return res.status(404).send('Range must be respected')
+        }
+
         let [row, created] = await Activity.findOrCreate({
             where: {
                 name: activity.name,
@@ -18,7 +38,7 @@ router.post("/", async (req, res) => {
                 season: activity.season,
             }
         })
-        // console.log(row);
+        console.log('created', created);
         
             const match = await Country.findAll({
                 where:{
@@ -28,12 +48,16 @@ router.post("/", async (req, res) => {
             // console.log(match)
         
         await row.addCountries(match) //countries trae el name del pais
-        return res.status(200).json(row);
+        return !created?
+        res.status(404).send(`${activity.name} already exist`)
+        :res.status(200).json(row);
     } catch (err) {
         console.log(err)
-        res.status(404).send(err);
+        res.status(404).json(err);
     }
 })
+
+//GEt all activities from Db
 
 router.get('/', async (req, res)=>{
     
@@ -41,8 +65,8 @@ router.get('/', async (req, res)=>{
         const allActivities = await Activity.findAll({
             include: Country
         });
-
-        console.log(allActivities.name)
+        // console.log(allActivities)
+        // console.log(allActivities.name)
         res.status(200).json(allActivities)
     } catch (error) {
         res.status(400).send(error)

@@ -26,14 +26,7 @@ conn.sync({ force: true }).then(async () => {
 
   await updateTotal(); //me traigo la info de la api cuando levanto la app
   
-  server.listen(process.env.PORT || 3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+  server.listen(3001, () => {
+    console.log('%s listening at 3001, love Beatles!'); // eslint-disable-line no-console
   });
 });
-
-
-// conn.sync({ force: true }).then(() => {
-//   server.listen(process.env.PORT, () => {
-//     console.log("%s listening at 3000"); // eslint-disable-line no-console
-//   });
-// });

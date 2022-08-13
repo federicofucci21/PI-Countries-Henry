@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { getCountries, filterCountriesByContinent, filterOrderAlf, filterCountriesByActivity, filterPopulation, getActivities} from '../../actions';
 import { Link } from "react-router-dom";
 import style from './filtersStyle.module.css';
@@ -13,12 +13,12 @@ function Filters({setCurrentPage, setOrder, selectActivities}) {
     useEffect(()=>{
         dispatch(getCountries()
         )
-    }, [dispatch, getCountries]
+    }, [dispatch]
     );
     useEffect(()=>{
         dispatch( 
         getActivities())
-    }, [dispatch, getActivities]
+    }, [dispatch]
     );
 
     function handleClick(e){

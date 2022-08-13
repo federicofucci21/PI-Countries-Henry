@@ -31,7 +31,6 @@ export default function CreateActivity (props){
     const dispatch = useDispatch();
     const allCountries = useSelector((state)=> state.allCountries);
     allCountries.sort((a,b) => a.name < b.name ? -1 : +(a.name > b.name));
-    // console.log(allCountries)
     const history = useHistory();
     const [errors, setErrors] = useState({});
 
@@ -72,7 +71,7 @@ export default function CreateActivity (props){
             }));
         }else{
         dispatch(createActivity(input));
-        console.log(input);
+        // console.log(input);
         setInput({
             name: "",
             difficulty: 0,
@@ -84,10 +83,15 @@ export default function CreateActivity (props){
     };
 
     function handleSelect(e){
-        setInput({
+        console.log(input.countries);
+        console.log(e.target.value);
+        let uniqName = input.countries.find(c => c === e.target.value);
+        //el condicional evita que se repita el pais
+        if(!uniqName){
+            setInput({
             ...input,
             countries:[...input.countries, e.target.value]
-        })
+        })}
     }
 
 

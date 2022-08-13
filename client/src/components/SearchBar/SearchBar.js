@@ -26,7 +26,7 @@ export default function SearchBar (){
         if(name===''){
             e.preventDefault();
             dispatch(getCountries());
-            // window.alert('You must insert a Country Name')
+            alert('You must insert a Country Name')
         }else{        
             e.preventDefault();
             dispatch(getCountryName(name));
