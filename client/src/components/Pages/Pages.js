@@ -9,17 +9,17 @@ export default function Pages({countriesPerPage, allCountries, paginado, current
 
     function handleNext(e){
         let a = Math.ceil(allCountries/countriesPerPage)
-        console.log('aaa', a)
+        // console.log('aaa', a)
         if(e.currentPage< a){       
             e = e.currentPage + 1;
-            console.log('ola', e)
+            // console.log('ola', e)
             paginado(e)
         }
     };
     function handlePrev(e){
         if(e.currentPage>1){  
             e = e.currentPage - 1;
-            console.log('ola', e)
+            // console.log('ola', e)
             paginado(e)
         }
     }

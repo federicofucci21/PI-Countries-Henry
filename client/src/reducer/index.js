@@ -6,14 +6,15 @@ import {
     FILTER_BY_CONTINENT,
     FILTER_BY_ACTIVITY,
     ORDER_ALF,
-    ORDER_POB,
+    ORDER_POB
+} from '../actions/countryActions'
+
+import {
     GET_ACTIVITIES,
-    FILTER_BY_ACTIVITIES,
-} from '../actions/index'
+    FILTER_ACTIVITIES
+} from '../actions/activityActions'
 
-import { filterCountries, filterByAcrivities  } from './auxi';
-
-
+import { filterCountries, filterByAcrivities, orderAlf, orderByPopulation, filterActivities} from './auxi';
 
 const initialState = {
     countries: [],
@@ -21,7 +22,6 @@ const initialState = {
     countryDetails: {},
     allActivities: []
 };
-
 
 function rootReducer (state=initialState, action){
 
@@ -34,7 +34,7 @@ function rootReducer (state=initialState, action){
                 allCountries: action.payload
             };
         case GET_BY_NAME:
-                        console.log(action.payload)
+                        // console.log(action.payload)
             return {
                 ...state,
                 countries: action.payload
@@ -60,64 +60,21 @@ function rootReducer (state=initialState, action){
             }
 
         case FILTER_BY_ACTIVITY:
-            // let activitiesAct = state.allActivities;
-            // let countriesAct= action.payload === 'all'?state.allCountries
-            // :activitiesAct.filter(e=>e.name===action.payload)[0].countries
-            // console.log(countriesAct)
             return {
                 ...state,
                 countries: filterByAcrivities(state.allCountries, state.allActivities, action.payload)
             }
             
         case ORDER_ALF:
-            console.log('stateAct',state.allActivities)
-            let countriesOrdered = action.payload === 'asc'?
-            state.countries.sort(function(a,b){
-                if(a.name>b.name){
-                    return 1;
-                };
-                if(a.name<b.name){
-                    return -1;
-                }
-                return 0
-            }):
-            state.countries.sort(function(a,b){
-                if(a.name<b.name){
-                    return 1;
-                };
-                if(a.name>b.name){
-                    return -1;
-                }
-                return 0
-            });
             return{
                 ...state,
-                countries: countriesOrdered
+                countries: orderAlf(state.countries, action.payload)
             };
 
         case ORDER_POB:
-                let countriesPob = action.payload === 'min'?
-                state.countries.sort(function(a,b){
-                    if(a.population>b.population){
-                        return 1;
-                    };
-                    if(a.population<b.population){
-                        return -1;
-                    }
-                    return 0
-                }):
-                state.countries.sort(function(a,b){
-                    if(a.population<b.population){
-                        return 1;
-                    };
-                    if(a.population>b.population){
-                        return -1;
-                    }
-                    return 0
-                });
                 return{
                     ...state,
-                    countries: countriesPob
+                    countries: orderByPopulation(state.countries, action.payload)
                 };
 
         case GET_ACTIVITIES:
@@ -127,20 +84,15 @@ function rootReducer (state=initialState, action){
                 allActivities: action.payload,
                 filteredActivities: action.payload
             };
-        case FILTER_BY_ACTIVITIES:
-            const allActivities = state.allActivities;
-            console.log(allActivities)
-            const activitiesFiltered = action.payload === 'all'?allActivities:allActivities.filter(e=>e.name===action.payload)
+
+        case FILTER_ACTIVITIES:
             return{
                 ...state,
-                filteredActivities: activitiesFiltered
+                filteredActivities: filterActivities(state.allActivities, action.payload)
             }
-            
+
         default: return state
     };
-    
-
 };
-
 
 export default rootReducer;

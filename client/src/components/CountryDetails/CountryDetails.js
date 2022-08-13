@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getCountryDetail, cleanDeteails } from '../../actions';
+import { getCountryDetail, cleanDeteails } from '../../actions/countryActions';
 import { Link } from 'react-router-dom';
 import style  from './CountryDetailsStyle.module.css'
 

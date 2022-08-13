@@ -1,7 +1,8 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux'
-import { getCountries, filterCountriesByContinent, filterOrderAlf, filterCountriesByActivity, filterPopulation, getActivities} from '../../actions';
+import { getCountries, filterCountriesByContinent, filterOrderAlf, filterCountriesByActivity, filterPopulation } from '../../actions/countryActions';
+import { getActivities } from '../../actions/activityActions';
 import { Link } from "react-router-dom";
 import style from './filtersStyle.module.css';
 import SearchBar from '../SearchBar/SearchBar';

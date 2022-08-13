@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createActivity, getCountries } from "../../actions";
+import { getCountries } from "../../actions/countryActions";
+import { createActivity } from "../../actions/activityActions";
 import { Link, useHistory } from "react-router-dom";
 import style from './CreateActivityStyle.module.css'
 

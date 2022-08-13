@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getCountries,  getActivities} from '../../actions';
+import { getCountries } from '../../actions/countryActions';
+import { getActivities } from '../../actions/activityActions';
 import CountryCards from '../CountryCards/CountryCards'
 import style from  './/HomeStyle.module.css'
 import Pages from '../Pages/Pages';
@@ -28,15 +29,14 @@ export default function Home(){
         // console.log('selectActivities', selectActivities)
 
     const allCountries = useSelector((state)=>state.countries);
-    // console.log(allCountries);
 
-
+    //Logica Paginado
     const [currentPage, setCurrentPage] = useState(1);
     const [countriesPerPage] = useState(9);
     const indexOfLastCountries= currentPage * countriesPerPage;
     const indexOfFisrtCountries= indexOfLastCountries - countriesPerPage;
     const currentCountries = allCountries.length?allCountries.slice(indexOfFisrtCountries, indexOfLastCountries):allCountries
-    const [ setOrder] = useState('')
+    const [order, setOrder] = useState('')
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
     };

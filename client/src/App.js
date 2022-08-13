@@ -1,4 +1,5 @@
 import './App.css';
+import 'normalize.css';
 import { Route } from "react-router-dom";
 import LandingPage from './components/LandingPage/LandingPage';
 import Home from './components/Home/Home'
@@ -9,12 +10,9 @@ import ActivitiesAll from './components/ActivitiesAll/ActivitiesAll';
 function App() {
   return (
     <>
-    <Route exact path={'/'}> <LandingPage/> </Route>
-    <Route exact path='/home'  component={Home}/>
-    <Route
-        path={'/countries/:id'}
-        render={(props) => <CountryDetails {...props} />}
-      />
+      <Route exact path={'/'} component={LandingPage}/>
+      <Route exact path='/home'  component={Home}/>
+      <Route path={'/countries/:id'} component={CountryDetails}/>
       <Route path={'/activity'} component={ActivitiesAll}/>
       <Route path={'/activities'} component={CreateActivity}/>
     </>
