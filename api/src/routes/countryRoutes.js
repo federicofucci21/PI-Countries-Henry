@@ -12,6 +12,7 @@ router.get('/', async (req, res)=>{
     // console.log(name);
     
     try {
+        
         if(name){
             const countryName = await Country.findAll({
                 where: {

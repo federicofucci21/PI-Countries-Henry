@@ -16,7 +16,6 @@ export default function landingPage (){
             <section className={style.section}>
                 <div className={style.earth}></div>
                 <div className={style.circle}>
-                {/* <span className={style.span}>PI Countries App - Henry</span> */}
                 <span className={style.span1}>P</span>
                 <span className={style.span2}>I</span>
                 <span className={style.span3}>-</span>

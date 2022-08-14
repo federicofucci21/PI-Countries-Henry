@@ -110,3 +110,38 @@
     cursor: pointer;
 }
 
+.btnDelete{
+    display: flex;
+    border-radius: 9999px;
+    box-sizing: border-box;
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 1px solid #00000080;
+    background-color: #29292980;
+    align-items: center;
+    justify-content: center;
+}
+.btnDelete:hover{
+    background-color: #60609c;
+    backdrop-filter: blur(10px);
+    color: #bee3db;
+    transition: all 450ms ease 0s;
+}
+
+.countriesDiv{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.countriesLi{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+}

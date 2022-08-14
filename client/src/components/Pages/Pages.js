@@ -3,7 +3,6 @@ import style from './PagesStyle.module.css'
 
 export default function Pages({countriesPerPage, allCountries, paginado, currentPage}){
 
-    // const currentPage= currentPage;
     const prevVar = '< Previous'
     const nextVar = 'Next >'
 

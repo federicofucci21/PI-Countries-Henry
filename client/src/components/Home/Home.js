@@ -1,83 +1,72 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-import { getCountries } from '../../actions/countryActions';
-import { getActivities } from '../../actions/activityActions';
-import CountryCards from '../CountryCards/CountryCards'
-import style from  './/HomeStyle.module.css'
-import Pages from '../Pages/Pages';
-import LoadingPage from '../LoadingPage/loadingPage';
-import Filters from '../Filters/filters'
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCountries } from "../../actions/countryActions";
+import { getActivities } from "../../actions/activityActions";
+import CountryCards from "../CountryCards/CountryCards";
+import style from ".//HomeStyle.module.css";
+import Pages from "../Pages/Pages";
+import LoadingPage from "../LoadingPage/loadingPage";
+import Filters from "../Filters/filters";
 
+export default function Home() {
+  const dispatch = useDispatch();
 
-export default function Home(){
+  useEffect(() => {
+    dispatch(getCountries());
+  }, [dispatch]);
+  useEffect(() => {
+    dispatch(getActivities());
+  }, [dispatch]);
 
-    const dispatch = useDispatch();
+  const selectActivities = useSelector((state) => state.allActivities);
+  // console.log('selectActivities', selectActivities)
 
-    useEffect(()=>{
-        dispatch(getCountries()
-        )
-    }, [dispatch]
-    );
-    useEffect(()=>{
-        dispatch( 
-        getActivities())
-    }, [dispatch]
-    );
+  const allCountries = useSelector((state) => state.countries);
 
-    const selectActivities = useSelector((state)=>state.allActivities);
-        // console.log('selectActivities', selectActivities)
+  //Logica Paginado
+  const [currentPage, setCurrentPage] = useState(1);
+  const [countriesPerPage] = useState(9);
+  const indexOfLastCountries = currentPage * countriesPerPage;
+  const indexOfFisrtCountries = indexOfLastCountries - countriesPerPage;
+  const currentCountries = allCountries.length
+    ? allCountries.slice(indexOfFisrtCountries, indexOfLastCountries)
+    : allCountries;
+  const [order, setOrder] = useState("");
+  const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
-    const allCountries = useSelector((state)=>state.countries);
+  return (
+    <div>
+      {!currentCountries.length ? (
+        <LoadingPage />
+      ) : (
+        <div className={style.home}>
+          <Filters
+            setCurrentPage={setCurrentPage}
+            setOrder={setOrder}
+            selectActivities={selectActivities}
+          />
 
-    //Logica Paginado
-    const [currentPage, setCurrentPage] = useState(1);
-    const [countriesPerPage] = useState(9);
-    const indexOfLastCountries= currentPage * countriesPerPage;
-    const indexOfFisrtCountries= indexOfLastCountries - countriesPerPage;
-    const currentCountries = allCountries.length?allCountries.slice(indexOfFisrtCountries, indexOfLastCountries):allCountries
-    const [order, setOrder] = useState('')
-    const paginado = (pageNumber) => {
-        setCurrentPage(pageNumber)
-    };
+          <main className={style.main}>
+            <section className={style.homeCard}>
+              <CountryCards currentCountries={currentCountries} />
+            </section>
+          </main>
 
-
-
-    return (
-      <div>
-        {!currentCountries.length ? (
-          <LoadingPage />
-        ) : (
-          <div className={style.home}>
-            <Filters
-              setCurrentPage={setCurrentPage}
-              setOrder={setOrder}
-              selectActivities={selectActivities}
-            />
-
-            <main className={style.main}>
-              <section className={style.homeCard}>
-                <CountryCards currentCountries={currentCountries} />
-              </section>
-            </main>
-
-            <footer className={style.footer}>
-              <div>
-                <Pages
-                  countriesPerPage={countriesPerPage}
-                  allCountries={allCountries.length}
-                  currentPage={currentPage}
-                  paginado={paginado}
-                />
-              </div>
-            </footer>
-          </div>
-        )}
-      </div>
-    );
-
-};
-
-
-
-
+          <footer className={style.footer}>
+            <div>
+              <Pages
+                countriesPerPage={countriesPerPage}
+                allCountries={allCountries.length}
+                currentPage={currentPage}
+                paginado={paginado}
+              />
+            </div>
+          </footer>
+        </div>
+      )}
+    </div>
+  );
+}
