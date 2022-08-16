@@ -11,6 +11,32 @@ router.get('/', async (req, res)=>{
     const { name } = req.query
     // console.log(name);
     
+        //     if(name){
+        // Country.findAll({
+        //         where: {
+        //             name : {
+        //                 [Op.iLike]: `${name}`
+        //             }
+        //         }
+        //     })
+        //     .then(response=>{
+        //         return res.status(200).send(response)
+        //     })
+        //     .catch()
+
+        // } else {
+        //     Country.findAll()
+        //     .then(response=>{
+        //         return res.status(200).send(response)
+        //     })
+        //     .catch((error)=>{
+        //         res.status(400).send(error)
+        //     })
+        // }
+
+
+
+
     try {
         
         if(name){

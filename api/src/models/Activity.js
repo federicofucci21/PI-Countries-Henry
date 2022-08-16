@@ -8,7 +8,7 @@ sequelize.define('activity', {
         type: DataTypes.STRING,
         allowNull:false,
         validate:{
-            isAlpha: true,
+            // isAlpha: true,
             notNull: true,
             notEmpty: true,
         }
@@ -44,5 +44,9 @@ sequelize.define('activity', {
             notEmpty: true,
         }
         },
+        // id: {
+        //     type: DataTypes.INTEGER,
+        //     primaryKey: true
+        // }
     }, {timestamps:false});
 };
