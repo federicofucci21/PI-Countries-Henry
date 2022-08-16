@@ -21,7 +21,6 @@ export default function ActivitiesAll() {
     dispatch(filterActivities(e.target.value));
   }
 
-  // console.log(allActivities);
 
   return (
     <div className={style.main}>
@@ -48,7 +47,7 @@ export default function ActivitiesAll() {
               All
             </option>
             {allActivities.map((e) => (
-              <option value={e.name}>{e.name.toUpperCase()}</option>
+              <option value={e.name} id={e.id}>{e.name.toUpperCase()}</option>
             ))}
           </select>
         </div>
@@ -59,6 +58,7 @@ export default function ActivitiesAll() {
         </h5>
       </div>
       <div className={style.divCards}>
+        
         {filteredActivities?.map((e) => {
           return (
             <section className={style.activityCard}>
@@ -78,7 +78,7 @@ export default function ActivitiesAll() {
                     <div className={style.divCountries}>
                       {
                         <ul>
-                          <li>
+                          <li className={style.li}>
                             <Link
                               className={style.btnCountries}
                               to={`/countries/${e.id}`}

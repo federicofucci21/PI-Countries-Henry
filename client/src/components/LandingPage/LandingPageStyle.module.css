@@ -15,10 +15,10 @@
     background-attachment: fixed;
     background-size:cover;
     background-position: center;
-    /* text-align: center;
+    text-align: center;
     align-items: center;
     align-content: center;
-    justify-content: space-around; */
+    justify-content: space-around;
     position: absolute;
     min-height: 100%;
     min-width: 100%;
@@ -26,7 +26,7 @@
 
 
 
-.land_title, .land_question{
+.land_title, .land_question, .fucci{
     font-size: 2rem;
     font-weight: 700;
     font-family: 'Wild Hunt', sans-serif;
@@ -58,6 +58,12 @@
     -o-transform: rotate(10deg);
     transform: rotate(10deg);
     filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.fucci{
+    position:absolute;
+    right:5%;
+    bottom:5%;
 }
 
 .section{
@@ -236,14 +242,14 @@
     transform: rotateY(calc(23 * calc(360deg/23)))
     translateZ(221px)
 }
-.span23{
+/* .span23{
     transform: rotateY(calc(23 * calc(360deg/23)))
     translateZ(221px)
 }
 .span23{
     transform: rotateY(calc(23 * calc(360deg/23)))
     translateZ(221px)
-}
+} */
 
 
 @keyframes animateText {
@@ -254,3 +260,131 @@
         transform: perspective(1000px) rotateY(0deg) rotateX(15deg) translateY(-60px);
     }
 }
+
+
+@media (max-width: 480px) {
+    .land_title {
+        top:5%;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -o-transform: none;
+        transform: none;
+        filter: none;
+    }
+
+    .land_question {
+        top:20%;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -o-transform: none;
+        transform: none;
+        filter: none;
+        left: 35%;
+    }
+    .fucci{
+        position:absolute;
+        right:10%;
+        bottom:5%;
+    }
+    .earth {
+        width: 250px;
+        height: 250px;
+    }
+    .span1{
+        transform: rotateY(calc(1 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span2{
+        transform: rotateY(calc(2 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span3{
+        transform: rotateY(calc(3 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span4{
+        transform: rotateY(calc(4 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span5{
+        transform: rotateY(calc(5 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span6{
+        transform: rotateY(calc(6 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span7{
+        transform: rotateY(calc(7 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span8{
+        transform: rotateY(calc(8 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span9{
+        transform: rotateY(calc(9 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span10{
+        transform: rotateY(calc(10 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span11{
+        transform: rotateY(calc(11 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span12{
+        transform: rotateY(calc(12 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span13{
+        transform: rotateY(calc(13 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span14{
+        transform: rotateY(calc(14 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span15{
+        transform: rotateY(calc(15 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span16{
+        transform: rotateY(calc(16 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span17{
+        transform: rotateY(calc(17 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span18{
+        transform: rotateY(calc(18 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span19{
+        transform: rotateY(calc(19 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span20{
+        transform: rotateY(calc(20 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span21{
+        transform: rotateY(calc(21 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span22{
+        transform: rotateY(calc(22 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .span23{
+        transform: rotateY(calc(23 * calc(360deg/23)))
+        translateZ(171px)
+    }
+    .land{
+        border: 5px solid;
+        border-color: #292929b7;
+    }
+}
+

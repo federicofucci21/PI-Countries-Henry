@@ -3,8 +3,11 @@ import axios from 'axios';
 export const GET_ACTIVITIES = 'GET_ACTIVITIES';
 export const FILTER_ACTIVITIES = 'FILTER_ACTIVITIES';
 
+
+
+
 export function createActivity(payload){
-    return async function(dispatch){
+    return async function(){
         try {
             const activity = await axios.post("http://localhost:3001/activities", payload);
             console.log(payload);
@@ -36,3 +39,5 @@ export function filterActivities(payload){
         payload
     }
 }
+
+

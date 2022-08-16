@@ -32,12 +32,14 @@ export default function CreateActivity(props) {
   const history = useHistory();
   const [errors, setErrors] = useState({});
 
+
   const [input, setInput] = useState({
     name: "",
     difficulty: 0,
     duration: 0,
     season: "",
     countries: [],
+    id: ''
   });
   // console.log(input)
   useEffect(() => {
@@ -56,8 +58,7 @@ export default function CreateActivity(props) {
       ...input,
       [e.target.name]: e.target.value,
     });
-
-    console.log(input);
+    // console.log(input);
   }
 
   function handleSubmit(e) {
@@ -77,12 +78,12 @@ export default function CreateActivity(props) {
       );
     } else {
       dispatch(createActivity(input));
-      // console.log(input);
       setInput({
         name: "",
         difficulty: 0,
         duration: 0,
         season: "",
+        id: ''
       });
       console.log("Activity Created");
       history.push("/home");
@@ -93,7 +94,6 @@ export default function CreateActivity(props) {
     // console.log(input.countries);
     // console.log(e.target.value);
     let uniqName = input.countries.find((c) => c === e.target.value);
-    //el condicional evita que se repita el pais
     if (!uniqName) {
       setInput({
         ...input,
@@ -202,7 +202,7 @@ export default function CreateActivity(props) {
               <label>Countries: </label>
               <select
                 className={style.select}
-                multiple="true"
+                // multiple="true"
                 onChange={handleSelect}
               >
                 <option>--Countries--</option>
@@ -214,7 +214,7 @@ export default function CreateActivity(props) {
                 {input.countries.map((e) => (
                   <li className={style.countriesLi}>
                     <div className={style.countriesDiv}>
-                    <span className={style.countries}>{e}</span>
+                    <span className={style.countriesli}>{e}</span>
                     <button className={style.btnDelete}
                       value={e}
                       onClick={(x) => {removeCountry(x);}}

@@ -9,13 +9,13 @@ export default function CountryDetails(props) {
   const id = props.match.params.id;
 
   const dispatch = useDispatch();
-
+  //useState ATENCION
   useEffect(() => {
     dispatch(getCountryDetail(id));
     return () => {
       dispatch(cleanDeteails(dispatch));
     };
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   const countriesDetail = useSelector((state) => state.countryDetails);
   // console.log(countriesDetail);
@@ -27,7 +27,7 @@ export default function CountryDetails(props) {
           <button className={style.btnHeader}>Volver</button>
         </Link>
       </header>
-      <section>
+      <section className={style.section}>
         <div className={style.divCard}>
           <img
             className={style.img}

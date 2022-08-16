@@ -42,6 +42,9 @@ export default function landingPage (){
                 </div>
             </section>
             </Link>
+            <div className={style.fucci}>
+                by Federico Eloy Fucci
+            </div>
         </div>
     )
 };

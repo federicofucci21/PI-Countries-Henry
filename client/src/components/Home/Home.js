@@ -38,9 +38,9 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className={style.divGral}>
       {!currentCountries.length ? (
-        <LoadingPage />
+        <div className={style.loadingDiv}><LoadingPage /></div>
       ) : (
         <div className={style.home}>
           <Filters

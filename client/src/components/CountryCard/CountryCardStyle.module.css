@@ -1,7 +1,7 @@
 .card{
     border: 1px solid #f2e9e4;
     border-radius: 1rem;
-    width: fit-content;
+    width: 330px;
     height: 400px;
     display:flex;
     flex-direction: column;
@@ -9,8 +9,8 @@
     color: #f5d1ef;
     background-color: #5e548e23;
     box-shadow: 1.5px 0.5px 5px #f2adadbc;
-
-    /* opacity: 0.70; */
+    margin: 10px;
+    overflow: hidden;
 }
 .card:hover{
     background-color: #e75d5dbc;

@@ -2,7 +2,7 @@
 
 //Filters
 
-export const filterCountries = (allCountries, continent) =>{
+export const filterByContinents = (allCountries, continent) =>{
     return continent === 'all'?allCountries:allCountries.filter(e=>e.region===continent)
 };
 

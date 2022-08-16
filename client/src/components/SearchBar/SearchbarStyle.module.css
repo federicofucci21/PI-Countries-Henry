@@ -1,6 +1,5 @@
 /* .form{
-    justify-content: space-between;
-    width: 50%;
+    display: contents;
 } */
 
 
@@ -32,4 +31,20 @@
     backdrop-filter: blur(10px);
     color: #bee3db;
     transition: all 450ms ease 0s;
+}
+
+@media (max-width: 480px) {
+    .form{
+        display: contents;
+    }
+    .input{
+        height: 45%;
+        width: 40%;
+    }
+    
+    .btn{
+        width: 4rem;
+        height: 3rem;
+        /* font-size: 0.95rem; */
+    }
 }
