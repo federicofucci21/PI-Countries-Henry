@@ -11,15 +11,6 @@ describe("Country model", () => {
     })
   );
 
-  //     {
-  //         id: "ARG",
-  //       name: "Argentina",
-  //       flag: "https://flagcdn.com/w320/ar.png" ,
-  //       region: "Americas",
-  //       capital: "Buenos Aires",
-  //       subregion: "South America",
-  // }
-
   describe("Validators", () => {
     beforeEach(() => Country.sync({ force: true }));
     describe("name", () => {
@@ -66,7 +57,7 @@ describe("Country model", () => {
           region: "Americas",
           capital: "Buenos Aires",
           subregion: "South America",
-          population: "45376763"
+          population: "45376763",
         })
           .then(() => done(new Error("population must be an INTEGER")))
           .catch(() => done());
@@ -79,7 +70,7 @@ describe("Country model", () => {
           region: "Americas",
           capital: "Buenos Aires",
           subregion: "South America",
-          population: 45376763
+          population: 45376763,
         });
       });
     });

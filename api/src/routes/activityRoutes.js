@@ -6,10 +6,8 @@ require("dotenv").config();
 
 router.post("/", async (req, res) => {
   const activity = req.body;
-  // console.log('act id',req.body);
   try {
     //Some validations ...
-
     if (
       !activity.name ||
       !activity.difficulty ||
@@ -46,15 +44,14 @@ router.post("/", async (req, res) => {
         name: activity.countries,
       },
     });
-    // console.log(match)
 
-    await row.addCountries(match); //countries trae el name del pais
+    await row.setCountries(match);
     return !created
       ? res.status(404).send(`${activity.name} already exist`)
       : res.status(200).json(row);
   } catch (err) {
-    console.log(err);
-    res.status(404).json(err);
+    console.log(err.message);
+    res.status(404).json(err.message);
   }
 });
 
@@ -65,12 +62,47 @@ router.get("/", async (req, res) => {
     const allActivities = await Activity.findAll({
       include: Country,
     });
-    // console.log(allActivities)
-    // console.log('id', allActivities[0].name)
     res.status(200).json(allActivities);
   } catch (error) {
     res.status(400).send(error);
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  let { id } = req.params;
+  console.log(id);
+  try {
+    await Activity.destroy({
+      where: {
+        id,
+      },
+    });
+    return res.status(200).send("actividad eliminada");
+  } catch (error) {
+    return console.log(error);
+  }
+});
+
 module.exports = router;
+
+// router.update('/:id', async(req, res)=>{
+//   let { id }= req.params;
+//   console.log(id);
+//   try {
+//     const activity = await Activity.findByPk(id);
+
+//     activity.set({
+//             name: activity.name,
+//             difficulty: activity.difficulty,
+//             duration: activity.duration,
+//             season: activity.season,
+//     });
+
+//     await activity.save();
+
+//       return res.status(200).send('actividad eliminada')
+
+//   } catch (error) {
+//       return console.log(error)
+//   }
+// })
