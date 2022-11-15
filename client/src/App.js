@@ -13,6 +13,7 @@ function App() {
       <Route exact path={'/'} component={LandingPage}/>
       <Route exact path='/home'  component={Home}/>
       <Route path={'/countries/:id'} component={CountryDetails}/>
+      {/* <Route path={'/countries/:id'} render={CountryDetails}/> */}
       <Route path={'/activity'} component={ActivitiesAll}/>
       <Route path={'/activities'} component={CreateActivity}/>
     </>
@@ -20,3 +21,4 @@ function App() {
 }
 
 export default App;
+

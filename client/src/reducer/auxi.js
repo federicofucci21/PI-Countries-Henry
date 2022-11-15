@@ -65,3 +65,26 @@ export const orderByPopulation = (countries, payload)=>{
     });
 };
 
+
+export const orderByArea = (countries, payload)=>{
+
+    return payload === 'min'?
+    countries.sort(function(a,b){
+        if(a.area>b.area){
+            return 1;
+        };
+        if(a.area<b.area){
+            return -1;
+        }
+        return 0
+    }):
+    countries.sort(function(a,b){
+        if(a.area<b.area){
+            return 1;
+        };
+        if(a.area>b.area){
+            return -1;
+        }
+        return 0
+    });
+};

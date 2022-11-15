@@ -36,6 +36,7 @@ describe("Activity routes", () => {
 
   describe("POST /activities", () => {
     beforeAll(async () => {
+      Activity.sync({ force: true });
       await updateTotal();
     });
 

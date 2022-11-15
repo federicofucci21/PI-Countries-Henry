@@ -7,6 +7,10 @@ import { Provider } from "react-redux";
 import { store } from "./store/index"
 import { BrowserRouter } from "react-router-dom";
 
+
+// BEFORE ALL.  add SKIP_PREFLIGHT_CHECK=true to an .env file in your project.
+
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

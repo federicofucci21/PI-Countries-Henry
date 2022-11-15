@@ -32,11 +32,14 @@ export default function Home() {
   const currentCountries = allCountries.length
     ? allCountries.slice(indexOfFisrtCountries, indexOfLastCountries)
     : allCountries;
-  const [order, setOrder] = useState("");
-  const paginado = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
 
+
+    const paginado = (pageNumber) => {
+      setCurrentPage(pageNumber);
+    };
+    
+    const [order, setOrder] = useState("");
+    
   return (
     <div className={style.divGral}>
       {!currentCountries.length ? (
@@ -70,3 +73,7 @@ export default function Home() {
     </div>
   );
 }
+
+
+
+
