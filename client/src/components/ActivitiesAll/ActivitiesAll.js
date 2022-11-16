@@ -3,7 +3,7 @@ import ActivityCard from "../ActivityCard/ActivityCard";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getActivities } from "../../actions/activityActions";
+import { getActivities, deleteActivity } from "../../actions/activityActions";
 import { filterActivities } from "../../actions/activityActions";
 import style from "./ActivityAllStyle.module.css";
 
@@ -21,6 +21,12 @@ export default function ActivitiesAll() {
     dispatch(filterActivities(e.target.value));
   }
 
+  function handleDelete(e) {
+    e.preventDefault();
+    dispatch(deleteActivity(e.target.value));
+    dispatch(getActivities());
+    console.log("Activity Deleted");
+  }
 
   return (
     <div className={style.main}>
@@ -47,21 +53,26 @@ export default function ActivitiesAll() {
               All
             </option>
             {allActivities.map((e) => (
-              <option value={e.name} id={e.id}>{e.name.toUpperCase()}</option>
+              <option value={e.name} id={e.id}>
+                {e.name.toUpperCase()}
+              </option>
             ))}
           </select>
         </div>
       </div>
+      
       <div>
         <h5 className={style.difLevel}>
           * - 1(Muy facil) 2(facil) 3(Medio) 4(Dificil) 5(Muy Dificil)
         </h5>
       </div>
       <div className={style.divCards}>
-        
         {filteredActivities?.map((e) => {
           return (
             <section className={style.activityCard}>
+              <button value={e.id} onClick={handleDelete}>
+                x
+              </button>
               <div className={style.divAct}>
                 <ActivityCard
                   name={e.name.toUpperCase()}

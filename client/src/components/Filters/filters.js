@@ -7,6 +7,7 @@ import {
   filterOrderAlf,
   filterCountriesByActivity,
   filterPopulation,
+  filterArea
 } from "../../actions/countryActions";
 import { getActivities } from "../../actions/activityActions";
 import { Link } from "react-router-dom";
@@ -48,6 +49,13 @@ function Filters({ setCurrentPage, setOrder, selectActivities }) {
   function handleOrderPob(e) {
     e.preventDefault();
     dispatch(filterPopulation(e.target.value));
+    setCurrentPage(1);
+    setOrder(`Ordered ${e.target.value}`);
+  }
+
+  function handleOrderArea(e) {
+    e.preventDefault();
+    dispatch(filterArea(e.target.value));
     setCurrentPage(1);
     setOrder(`Ordered ${e.target.value}`);
   }
@@ -163,6 +171,30 @@ function Filters({ setCurrentPage, setOrder, selectActivities }) {
             <option value="max">Max</option>
           </select>
         </div>
+
+
+
+
+        <div className={style.divSelect}>
+          <label>Orden por Area</label>
+          <select
+            className={style.select}
+            placeholder="Order Popul"
+            onChange={(e) => {
+              handleOrderArea(e);
+            }}
+          >
+        {/* ORDEN POR POBLACION  */}
+            <option>--Order--</option>
+            <option value="min">Min</option>
+            <option value="max">Max</option>
+          </select>
+        </div>
+
+
+
+
+
         {/* FILTRO POR ACTIVIDAD */}
         <div className={style.divSelect}>
           <label>Orden por Actividad</label>

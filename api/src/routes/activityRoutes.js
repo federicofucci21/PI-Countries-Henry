@@ -45,7 +45,7 @@ router.post("/", async (req, res) => {
       },
     });
 
-    await row.setCountries(match);
+    await row.addCountries(match);
     return !created
       ? res.status(404).send(`${activity.name} already exist`)
       : res.status(200).json(row);

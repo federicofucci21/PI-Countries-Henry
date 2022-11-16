@@ -22,7 +22,7 @@ const { conn } = require('./src/db.js');
 const updateTotal = require('./src/controllers/country')
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(async () => {
+conn.sync({ force: true }).then(async () => {
 
   await updateTotal(); //me traigo la info de la api cuando levanto la app
   

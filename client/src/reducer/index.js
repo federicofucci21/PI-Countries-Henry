@@ -6,7 +6,8 @@ import {
     FILTER_BY_CONTINENT,
     FILTER_BY_ACTIVITY,
     ORDER_ALF,
-    ORDER_POB
+    ORDER_POB,
+    ORDER_AREA
 } from '../actions/countryActions'
 
 import {
@@ -14,7 +15,7 @@ import {
     FILTER_ACTIVITIES
 } from '../actions/activityActions'
 
-import { filterByContinents, filterByAcrivities, orderAlf, orderByPopulation, filterActivities} from './auxi';
+import { filterByContinents, filterByAcrivities, orderAlf, orderByPopulation, filterActivities, orderByArea} from './auxi';
 
 const initialState = {
     countries: [],
@@ -76,6 +77,13 @@ function rootReducer (state=initialState, action){
                     ...state,
                     countries: orderByPopulation(state.countries, action.payload)
                 };
+                       
+        case ORDER_AREA:
+                return{
+                    ...state,
+                    countries: orderByArea(state.countries, action.payload)
+                };
+
 
         case GET_ACTIVITIES:
             // console.log(action.payload)
